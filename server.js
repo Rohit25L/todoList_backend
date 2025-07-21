@@ -10,11 +10,10 @@ const path = require("path");
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get("/", (req, res) => {
-  app.use(express.static(path.resolve(__dirname, "frontenda", "dist")));
-  res.sendFile(path.resolve(__dirname, "frontenda", "dist", "index.html"));
-});
 
+const completead = require("./routes/completedRou");
+
+app.use("/api/v3", completead);
 app.use("/api/v1", auth);
 app.use("/api/v2", rouList);
 
